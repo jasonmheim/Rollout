@@ -2,13 +2,13 @@
 
 This is a personal project I developed to learn more about Android, but also to address what
 I believe are significant deficiencies in the official app provided by the NYC Bike Share program.
-It is currently available through the play store but only to beta users who sign up at:
+It is currently available through the Google Play Store but only to beta users who sign up at:
 
 https://groups.google.com/forum/#!forum/rollout-beta-users
 
 ## Features
 
-* **Still useful with poor/no network.** This application uses Sync Adapters to effieciently keep
+* **Still useful with poor/no network.** This application uses Sync Adapters to efficiently keep
   the list of stations and their capacities up to date. It tells you what time the data were last
   synchronized so that you know how recent the changes are. If you're tired of trying to use the
   official app in the elevator of your building, you'll find this quite useful.
