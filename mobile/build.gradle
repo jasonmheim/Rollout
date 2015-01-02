@@ -24,8 +24,8 @@ android {
         applicationId "com.jasonmheim.rollout"
         minSdkVersion 21
         targetSdkVersion 21
-        versionCode 2
-        versionName "BETA: 2"
+        versionCode 3
+        versionName "BETA: 3"
     }
     buildTypes {
         debug {
