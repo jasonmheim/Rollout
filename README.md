@@ -51,5 +51,5 @@ This application operates in one of five modes:
   to which stations nearest you have capacity.
 * **Riding to home/work.** This means you are riding to a specific desitination. Notifications
   are at max priority, and optionally include haptic feedback. Data and location synchronaization
-  are at maximum frequency to keep you upt o date as to which station nearest your destination
+  are at maximum frequency to keep you up to date as to which station nearest your destination
   you should choose.
