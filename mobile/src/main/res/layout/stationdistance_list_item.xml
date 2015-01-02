@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (C) 2014 Jason M. Heim
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:id="@+id/progressLayout"
+        android:background="@color/availableDocks"
+        android:layout_alignTop="@+id/itemTopLine"
+        android:layout_alignBottom="@+id/itemBottomLine">
+
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight=".30"
+            android:background="@color/brokenBikes"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/brokenBikes"/>
+
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight=".35"
+            android:background="@color/availableBikes"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/availableBikes"/>
+
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight=".35"
+            android:background="@color/availableDocks"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/availableDocks"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:id="@+id/itemTopLine">
+
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=""
+            android:textColor="@color/white"
+            android:id="@+id/textViewTL"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="0dp"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_weight=".65"
+            android:gravity="top"/>
+
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=""
+            android:textColor="@color/white"
+            android:id="@+id/textViewTR"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="0dp"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_weight=".35"
+            android:gravity="top"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:id="@+id/itemBottomLine"
+        android:layout_below="@+id/itemTopLine">
+
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=""
+            android:textColor="@color/white"
+            android:id="@+id/textViewBL"
+            android:paddingLeft="10dp"
+            android:paddingTop="0dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_weight=".65"/>
+
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=""
+            android:textColor="@color/white"
+            android:id="@+id/textViewBR"
+            android:paddingLeft="10dp"
+            android:paddingTop="0dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_weight=".35"/>
+    </LinearLayout>
+
+</RelativeLayout>

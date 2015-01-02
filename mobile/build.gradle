@@ -1,0 +1,115 @@
+/*
+ * Copyright (C) 2014 Jason M. Heim
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "20.0.0"
+
+    defaultConfig {
+        applicationId "com.jasonmheim.rollout"
+        minSdkVersion 21
+        targetSdkVersion 21
+        versionCode 2
+        versionName "BETA: 2"
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable true
+        }
+        release {
+            minifyEnabled true // TODO: get this working
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+    }
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java']
+        }
+        androidTest {
+            java.srcDirs = ['src/androidTest/java']
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+configurations {
+    codeGen
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    // wearApp project(':wear') // Re-activate this to add real wearable functionality.
+    compile project(':shared')
+    compile 'com.google.guava:guava:18.0'
+    codeGen 'com.squareup.dagger:dagger-compiler:1.2.1'
+    androidTestCompile 'junit:junit:4.+'
+    androidTestCompile 'org.mockito:mockito-core:1.+'
+    androidTestCompile('org.robolectric:robolectric:2.+') {
+        exclude module: 'classworlds'
+        exclude module: 'maven-artifact'
+        exclude module: 'maven-artifact-manager'
+        exclude module: 'maven-error-diagnostics'
+        exclude module: 'maven-model'
+        exclude module: 'maven-plugin-registry'
+        exclude module: 'maven-profile'
+        exclude module: 'maven-project'
+        exclude module: 'maven-settings'
+        exclude module: 'nekohtml'
+        exclude module: 'plexus-container-default'
+        exclude module: 'plexus-interpolation'
+        exclude module: 'plexus-utils'
+        exclude module: 'wagon-file'
+        exclude module: 'wagon-http-lightweight'
+        exclude module: 'wagon-http-shared'
+        exclude module: 'wagon-provider-api'
+    }
+    compile 'com.android.support:support-v4:21.0.+'
+    compile 'com.google.android.gms:play-services:6.1.11'
+    compile 'com.google.code.gson:gson:2.2.+'
+    compile 'com.squareup.dagger:dagger:1.2.1'
+    compile 'com.squareup:otto:1.3.5'
+    compile 'javax.annotation:jsr250-api:1.0'
+}
+
+
+android.applicationVariants.all { variant ->
+    //Where to place the generated code
+    variant.ext.set("dagger_gen_${variant.dirName}", file("${project.buildDir}/source/dagger_gen/${variant.dirName}"))
+
+    //Do the actual codeGen things
+    variant.javaCompile.doFirst {
+        File out = variant.ext.get("dagger_gen_${variant.dirName}")
+        out.mkdirs()
+        variant.javaCompile.options.compilerArgs += [
+                '-processorpath', configurations.codeGen.getAsPath(),
+                '-s', out
+        ]
+    }
+}
