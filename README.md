@@ -32,7 +32,7 @@ https://groups.google.com/forum/#!forum/rollout-beta-users
   save you the headache.
 * **Full and Empty thresholds.** Some stations frequently have "pinned" docks or bikes; the system
   believes they are available, but they are actually stuck in a bad state. Alternatively, you
-  may normally commuteduring times when capacities are extremely volatile. If you encounter these
+  may normally commute during times when capacities are extremely volatile. If you encounter these
   situations frequently, you can adjust the meaning of "full" or "empty" on the settings page to
   choose your stations more conservatively.
 
