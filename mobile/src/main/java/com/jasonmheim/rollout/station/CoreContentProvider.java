@@ -493,7 +493,8 @@ public class CoreContentProvider extends ContentProvider {
       Station previousStation = previousStationDistanceRank.getStationDistance().getStation();
       Station nextStation = nextStationDistanceRank.getStationDistance().getStation();
       if (previousStation.availableBikes != nextStation.availableBikes
-          || previousStation.availableDocks != nextStation.availableDocks) {
+          || previousStation.availableDocks != nextStation.availableDocks
+          || previousStation.id != nextStation.id) {
         return BUZZ_RANKS[nextStationDistanceRank.getLimitedRank()];
       }
     }
