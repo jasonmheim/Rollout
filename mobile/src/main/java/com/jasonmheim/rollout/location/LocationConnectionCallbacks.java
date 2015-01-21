@@ -16,13 +16,11 @@
 
 package com.jasonmheim.rollout.location;
 
-import android.app.Application;
 import android.location.Location;
 import android.os.Bundle;
 
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationServices;
-import com.jasonmheim.rollout.action.ActionManager;
+import com.google.android.gms.location.FusedLocationProviderApi;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -34,13 +32,16 @@ import javax.inject.Singleton;
 @Singleton
 public class LocationConnectionCallbacks implements GoogleApiClient.ConnectionCallbacks {
 
+  private final FusedLocationProviderApi fusedLocationProviderApi;
   private final Provider<GoogleApiClient> locationClientProvider;
   private final LocationManager locationManager;
 
   @Inject
   public LocationConnectionCallbacks(
+      FusedLocationProviderApi fusedLocationProviderApi,
       Provider<GoogleApiClient> locationClientProvider,
       LocationManager locationManager) {
+    this.fusedLocationProviderApi = fusedLocationProviderApi;
     this.locationClientProvider = locationClientProvider;
     this.locationManager = locationManager;
   }
@@ -49,7 +50,7 @@ public class LocationConnectionCallbacks implements GoogleApiClient.ConnectionCa
   public void onConnected(Bundle bundle) {
     // NB: While the location client is a singleton, we need the provider to avoid circular deps.
     GoogleApiClient locationClient = locationClientProvider.get();
-    Location location = LocationServices.FusedLocationApi.getLastLocation(locationClient);
+    Location location = fusedLocationProviderApi.getLastLocation(locationClient);
     locationManager.setLastLocation(location);
   }
 

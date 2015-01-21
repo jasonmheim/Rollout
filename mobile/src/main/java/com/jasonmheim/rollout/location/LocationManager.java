@@ -29,12 +29,10 @@ import android.os.RemoteException;
 import android.util.Log;
 
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.location.FusedLocationProviderApi;
 import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
 import com.jasonmheim.rollout.Constants;
 
-import java.util.Date;
 import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
@@ -42,6 +40,7 @@ import javax.inject.Provider;
 import javax.inject.Singleton;
 
 import static com.jasonmheim.rollout.Constants.MS_PER_MINUTE;
+import static java.lang.Math.min;
 
 /**
  * Manages the last known location of the device. The incoming value should normally be set by the
@@ -57,6 +56,7 @@ public class LocationManager {
   private final Application application;
   private final ContentResolver contentResolver;
   private final ExecutorService executorService;
+  private final FusedLocationProviderApi fusedLocationProviderApi;
   private final Provider<GoogleApiClient> locationClientProvider;
   private final SharedPreferences sharedPreferences;
 
@@ -65,11 +65,13 @@ public class LocationManager {
       Application application,
       ContentResolver contentResolver,
       ExecutorService executorService,
+      FusedLocationProviderApi fusedLocationProviderApi,
       Provider<GoogleApiClient> locationClientProvider,
       SharedPreferences sharedPreferences) {
     this.application = application;
     this.contentResolver = contentResolver;
     this.executorService = executorService;
+    this.fusedLocationProviderApi = fusedLocationProviderApi;
     this.locationClientProvider = locationClientProvider;
     this.sharedPreferences = sharedPreferences;
   }
@@ -137,7 +139,7 @@ public class LocationManager {
     // The "fastest interval" should be less than the interval. Set it to the lesser of one minute
     // or half the requested interval.
     long halfIntervalInMs = intervalInMs / 2;
-    final long fastestIntervalInMs = Math.min(halfIntervalInMs, MS_PER_MINUTE);
+    final long fastestIntervalInMs = min(halfIntervalInMs, MS_PER_MINUTE);
 
     // Since we can't guarantee that the location client will be connected, run this on an executor
     // where we can perform a blocking connect to the location client.
@@ -156,7 +158,7 @@ public class LocationManager {
 
         GoogleApiClient locationClient = locationClientProvider.get();
         locationClient.blockingConnect();
-        LocationServices.FusedLocationApi.requestLocationUpdates(
+        fusedLocationProviderApi.requestLocationUpdates(
             locationClient, locationRequest, pendingIntent);
       }
     });

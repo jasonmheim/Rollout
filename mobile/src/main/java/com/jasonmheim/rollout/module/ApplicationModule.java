@@ -25,6 +25,7 @@ import android.location.LocationManager;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.FusedLocationProviderApi;
 import com.google.android.gms.location.LocationServices;
 import com.google.gson.Gson;
 import com.jasonmheim.rollout.Constants;
@@ -179,5 +180,11 @@ public class ApplicationModule {
   NotificationManager provideNotificationManager(Application application) {
     return (NotificationManager) application.getApplicationContext()
         .getSystemService(Context.NOTIFICATION_SERVICE);
+  }
+
+  @Provides
+  @Singleton
+  FusedLocationProviderApi provideFusedLocationProviderApi() {
+    return LocationServices.FusedLocationApi;
   }
 }

@@ -70,16 +70,18 @@
     <orderEntry type="library" exported="" scope="TEST" name="nekohtml-1.9.6.2" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="objenesis-2.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="otto-1.3.5" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="shared" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="javax.inject-1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="classes" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="gson-2.3.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="dagger-1.2.1" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="dagger-compiler-1.2.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="classes" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="shared" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="javawriter-2.3.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="internal_impl-21.0.3" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="support-annotations-21.0.3" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="jsr250-api-1.0" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="support-annotations-21.0.3" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="guava-18.0" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="javax.inject-1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="_Users_jasonmheim_AndroidStudioProjects_Rollout_mobile_build_intermediates_classes_debug" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="_Users_jasonmheim_AndroidStudioProjects_Rollout_mobile_build_intermediates_dependency_cache_debug" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="android" level="project" />

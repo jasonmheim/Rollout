@@ -14,15 +14,18 @@
  * limitations under the License.
  */
 
+evaluationDependsOn(':mobile')
+
 apply plugin: 'java'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     def androidModule = project(':mobile')
-    compile androidModule
+    testCompile project(path: ':mobile', configuration: 'debugCompile')
 
-    testCompile androidModule.android.applicationVariants.toList().first().javaCompile.classpath
-    testCompile androidModule.android.applicationVariants.toList().first().javaCompile.outputs.files
+    def debugVariant = androidModule.android.applicationVariants.find({it.name == 'debug'})
+    testCompile debugVariant.javaCompile.classpath
+    testCompile debugVariant.javaCompile.outputs.files
     testCompile files(androidModule.plugins.findPlugin("com.android.application").getBootClasspath())
 
     testCompile 'junit:junit:4.+'
