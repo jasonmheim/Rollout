@@ -6,6 +6,8 @@ It is currently available through the Google Play Store but only to beta users w
 
 https://groups.google.com/forum/#!forum/rollout-beta-users
 
+**Note: The app requires a minimum Android version of Lollipop.**
+
 ## Features
 
 * **Still useful with poor/no network.** This application uses Sync Adapters to efficiently keep
