@@ -49,9 +49,9 @@ import static java.lang.Math.min;
 @Singleton
 public class LocationManager {
 
-  private static final String LATITUDE = "LastLatitude";
-  private static final String LONGITUDE = "LastLongitude";
-  private static final String TIMESTAMP = "LastLocationTimestamp";
+  static final String LATITUDE = "LastLatitude";
+  static final String LONGITUDE = "LastLongitude";
+  static final String TIMESTAMP = "LastLocationTimestamp";
 
   private final Application application;
   private final ContentResolver contentResolver;
